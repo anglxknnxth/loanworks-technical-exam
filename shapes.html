@@ -1,0 +1,68 @@
+<script>
+class Shape {
+  constructor(name) {
+    this.name = name;
+  }
+
+  getName() {
+    return this.name;
+  }
+}
+
+class isCircle extends Shape {
+  constructor(name, radius) {
+    super(name);
+    this.radius = radius;
+  }
+
+  getPerimeter() {
+    return (2 * Math.PI.toFixed(5) * this.radius).toFixed(6);
+  }
+
+  getSurfaceArea() {
+    return (Math.PI.toFixed(5) * this.radius ** 2).toFixed(9);
+  }
+}
+
+class isRectangle extends Shape {
+  constructor(name, width, length) {
+    super(name);
+    this.width = width;
+    this.length = length;
+  }
+
+  getPerimeter() {
+    return (2 * (this.width + this.length)).toFixed(6);
+  }
+
+  getSurfaceArea() {
+    return (this.width * this.length).toFixed(9);
+  }
+
+  isSquare() {
+    return this.width === this.length;
+  }
+}
+
+let shapeNumber = prompt("Enter the number of the shape: \n1. Circle \n2. Rectangle");
+
+if (shapeNumber == "1") {
+  let name = prompt("Enter the circle name:");
+  let radius = Number(prompt("Enter the circle radius:"));
+  let circle = new isCircle(name, radius);
+  console.log(`${circle.getName()}`);
+  console.log(`Perimeter is ${circle.getPerimeter()}.`);
+  console.log(`Surface Area is ${circle.getSurfaceArea()}.`);
+} else if (shapeNumber == "2") {
+  let name = prompt("Enter the rectangle name:");
+  let width = Number(prompt("Enter the rectangle width:"));
+  let length = Number(prompt("Enter the rectangle length:"));
+  let rectangle = new isRectangle(name, width, length);
+  console.log(`${rectangle.getName()}`);
+  console.log(`Perimeter is ${rectangle.getPerimeter()}.`);
+  console.log(`Surface Area of ${rectangle.getName()} is ${rectangle.getSurfaceArea()}.`);
+  console.log(`The ${rectangle.getName()} ${rectangle.isSquare() ? "is" : "is not"} a square.`);
+} else {
+  console.log("1 or 2 only.");
+}
+</script>
